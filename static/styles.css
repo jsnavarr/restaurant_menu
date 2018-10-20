@@ -1,0 +1,58 @@
+
+body {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background:rgba(31, 29, 29, 0.815);
+    border: 15px solid white;
+    border-radius: 30px;
+    margin: 20px auto;
+    width: 60%;
+}
+.pane .header {
+    font-size: 50px;
+    text-align: center;
+}
+
+.newItem {
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+}
+
+.sep_rest hr {
+    border: 5px solid white;
+}
+
+.nameAndPrice {
+    font-size: 35px;
+    padding: 5px 20px;
+}
+
+.nameAndPrice .name {
+    text-align: left;    
+}
+
+.nameAndPrice .price {
+    float: right;  
+}
+.description {
+    color: whitesmoke;
+    font-size: 25px;
+    text-align: center;
+    padding: 5px 20px;
+}
+
+.edit_delete {
+    font-size: 20px;
+    padding: 0px 10px;
+    text-align: right;
+}
+
+.link {
+    color: white;
+}
+
+.flash {
+    background: aqua;
+    color: black;
+}

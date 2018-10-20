@@ -1,0 +1,51 @@
+
+body {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background:rgba(31, 29, 29, 0.815);
+    border: 15px solid white;
+    border-radius: 30px;
+    margin: 20px auto;
+    width: 60%;
+}
+.pane .header {
+    font-size: 50px;
+    text-align: center;
+}
+
+.newItem {
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+}
+
+.sep_rest hr {
+    border: 5px solid white;
+}
+
+.name {
+    font-size: 40px;
+    padding: 5px 20px;
+    text-align: left;
+}
+
+.menu {
+    font-size: 20px;
+    padding: 0px 10px;
+    float: right;  
+}
+
+.edit_delete {
+    font-size: 20px;
+    padding: 0px 10px;
+    text-align: left;
+}
+
+.link {
+    color: white;
+}
+
+.flash {
+    background: aqua;
+    color: black;
+}
