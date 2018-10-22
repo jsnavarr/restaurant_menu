@@ -1,11 +1,11 @@
 <html>
     <body>
         <h2>Edit Restaurant</h2>
-        <form method='POST' enctype='multipart/form-data' action='/restaurants/{{restaurant_id}}/editRestaurant/'>
+        <form method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/edit'>
             <a></br>Name: </a><input name='RestName' size=30 type='text' value = '{{item.name}}'>
             </br>
             <input type='submit' value='Update'> 
-            <a href='{{ url_for('restaurants')}}'>Cancel</a>
+            <a href='{{ url_for('showRestaurants')}}'>Cancel</a>
         </form>
     </body>
 </html>

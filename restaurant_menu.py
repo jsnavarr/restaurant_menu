@@ -15,8 +15,8 @@ session = DBSession()
 # List all the restaurants in the DB with edit and delete links.
 # It also has a link to display the menu for the restaurant
 @app.route('/')
-@app.route('/restaurants/')
-def restaurants():
+@app.route('/restaurants')
+def showRestaurants():
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurants = session.query(Restaurant)
@@ -24,20 +24,20 @@ def restaurants():
 
 
 # Create a new restaurant
-@app.route('/restaurants/newRestaurant/', methods = ['POST', 'GET'])
+@app.route('/restaurant/new', methods = ['POST', 'GET'])
 def newRestaurant():
     if request.method == 'POST':
         restaurant = Restaurant(name=request.form['newRestName'])
         session.add(restaurant)
         session.commit()
         flash("New restaurant created!!")
-        return redirect(url_for('restaurants'))
+        return redirect(url_for('showRestaurant'))
     else:
         return render_template('newRestaurant.html')
 
 
 # Edit the restaurant
-@app.route('/restaurants/<int:restaurant_id>/editRestaurant/', methods = ['POST', 'GET'])
+@app.route('/restaurant/<int:restaurant_id>/edit', methods = ['POST', 'GET'])
 def editRestaurant(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
@@ -49,13 +49,13 @@ def editRestaurant(restaurant_id):
                 session.add(myRestaurantQuery)
                 session.commit()
                 flash("Restaurant has been edited!!")
-        return redirect(url_for('restaurants'))
+        return redirect(url_for('showRestaurants'))
     else:
         return render_template('editRestaurant.html', restaurant_id=restaurant_id, item=myRestaurantQuery)
 
 
 # Delete the restaurant
-@app.route('/restaurants/<int:restaurant_id>/deleteRestaurant/', methods = ['POST', 'GET'])
+@app.route('/restaurant/<int:restaurant_id>/delete', methods = ['POST', 'GET'])
 def deleteRestaurant(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
@@ -65,23 +65,24 @@ def deleteRestaurant(restaurant_id):
             session.delete(myRestaurantQuery)
             session.commit()
             flash("Restaurant has been deleted!!")
-        return redirect(url_for('restaurants'))
+        return redirect(url_for('showRestaurants'))
     else:
         return render_template('deleteRestaurant.html', restaurant_id=restaurant_id, item=myRestaurantQuery)
 
 
 # Display the menu for the restaurant
-@app.route('/restaurants/<int:restaurant_id>/restaurantMenu/')
+@app.route('/restaurant/<int:restaurant_id>')
+@app.route('/restaurant/<int:restaurant_id>/menu')
 def restaurantMenu(restaurant_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
     restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
     items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id)
-    return render_template('RestaurantMenu.html', restaurant=restaurant, items=items)
+    return render_template('menu.html', restaurant=restaurant, items=items)
 
 
 # Create a new menu item for a restaurant
-@app.route('/restaurants/<int:restaurant_id>/menu/newRestaurantMenu/', methods = ['POST', 'GET'])
+@app.route('/restaurant/<int:restaurant_id>/menu/new', methods = ['POST', 'GET'])
 def newRestaurantMenu(restaurant_id):
     if request.method == 'POST':
         menu_item = MenuItem(name=request.form['newMenuItemName'], \
@@ -92,13 +93,13 @@ def newRestaurantMenu(restaurant_id):
         session.add(menu_item)
         session.commit()
         flash("New menu item created!!")
-        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('newRestaurantMenu.html', restaurant_id=restaurant_id)
+        return render_template('newMenuItem.html', restaurant_id=restaurant_id)
 
 
 # Edit a menu item for a restaurant
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/editRestaurantMenu/', methods = ['POST', 'GET'])
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/edit', methods = ['POST', 'GET'])
 def editRestaurantMenu(restaurant_id, menu_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
@@ -110,16 +111,15 @@ def editRestaurantMenu(restaurant_id, menu_id):
                 myMenuItemQuery.price=request.form['MenuItemPrice']
                 myMenuItemQuery.description=request.form['MenuItemDesc']
                 myMenuItemQuery.course=request.form['MenuItemCourse']
-                #myMenuItemQuery.restaurant_id=restaurant_id
                 session.add(myMenuItemQuery)
                 session.commit()
                 flash("Menu item has been edited!!")
-        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('editRestaurantMenu.html', restaurant_id=restaurant_id, menu_id=menu_id, item=myMenuItemQuery)
+        return render_template('editMenuItem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=myMenuItemQuery)
 
 # Delete a menu item from a restaurant
-@app.route('/restaurants/<int:restaurant_id>/menu/<int:menu_id>/deleteRestaurantMenu/', methods = ['POST', 'GET'])
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/delete', methods = ['POST', 'GET'])
 def deleteRestaurantMenu(restaurant_id, menu_id):
     DBSession = sessionmaker(bind=engine)
     session = DBSession()
@@ -129,9 +129,9 @@ def deleteRestaurantMenu(restaurant_id, menu_id):
             session.delete(myMenuItemQuery)
             session.commit()
             flash("Menu item has been deleted!!")
-        return redirect(url_for('restaurantMenu', restaurant_id=restaurant_id))
+        return redirect(url_for('showMenu', restaurant_id=restaurant_id))
     else:
-        return render_template('deleteRestaurantMenu.html', restaurant_id=restaurant_id, menu_id=menu_id, item=myMenuItemQuery)
+        return render_template('deleteMenuItem.html', restaurant_id=restaurant_id, menu_id=menu_id, item=myMenuItemQuery)
 
 
 # main function
