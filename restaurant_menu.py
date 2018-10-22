@@ -12,6 +12,24 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+# API to return all restaurants as a JSON object
+@app.route('/restaurants/JSON')
+def restaurantsJSON():
+    restaurants = session.query(Restaurant)
+    return jsonify(restaurant=[r.serialize for r in restaurants])
+ # API to return all the menu items from a restaurant as a JSON object
+@app.route('/restaurant/<int:restaurant_id>/menu/JSON')
+def restaurantMenuJSON(restaurant_id):
+    restaurant = session.query(Restaurant).filter_by(id=restaurant_id).one()
+    items = session.query(MenuItem).filter_by(restaurant_id=restaurant.id).all()
+    return jsonify(MenuItems=[i.serialize for i in items])
+ # API to return a menu item from a restaurant as a JSON object
+@app.route('/restaurant/<int:restaurant_id>/menu/<int:menu_id>/JSON')
+def menuItemJSON(restaurant_id, menu_id):
+    items = session.query(MenuItem).filter_by(id=menu_id).one()
+    return jsonify(MenuItem=[items.serialize])
+
+    
 # List all the restaurants in the DB with edit and delete links.
 # It also has a link to display the menu for the restaurant
 @app.route('/')
