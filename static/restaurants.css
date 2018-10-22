@@ -1,43 +1,43 @@
 
 body {
+    width: 60%;
     color: white;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background:rgba(31, 29, 29, 0.815);
-    border: 15px solid white;
-    border-radius: 30px;
+    background: steelblue;
     margin: 20px auto;
-    width: 60%;
 }
-.pane .header {
+
+.header {
     font-size: 50px;
     text-align: center;
+    border: 10px solid rgba(10, 84, 128, 0.733);
+    border-radius: 50px 50px 0px 0px;
+    padding: 20px;
+    background:rgba(10, 84, 128, 0.733);
 }
 
-.newItem {
+.header .newItem {
     font-size: 20px;
     color: white;
-    padding: 10px 20px;
 }
 
-.sep_rest hr {
-    border: 5px solid white;
-}
-
-.name {
+.section {
     font-size: 40px;
-    padding: 5px 20px;
-    text-align: left;
+    border: 10px solid rgba(10, 84, 128, 0.733);
+    padding: 20px 20px;
+    background:rgba(102, 93, 190, 0.815);
 }
 
-.menu {
-    font-size: 20px;
-    padding: 0px 10px;
+.section .name {
+    float: left;
+}
+
+.section .menu {
     float: right;  
 }
 
-.edit_delete {
+.section .edit_delete {
     font-size: 20px;
-    padding: 0px 10px;
     text-align: left;
 }
 
