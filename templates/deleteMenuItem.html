@@ -1,14 +1,14 @@
 <html>
     <body>
         <h2>Delete Menu Item</h2>
-        <form method='POST' enctype='multipart/form-data' action='/restaurants/{{restaurant_id}}/menu/{{menu_id}}/deleteRestaurantMenu/'>
+        <form method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/menu/{{menu_id}}/delete'>
             <a></br>Name: </a><input name='newMenuItemName' size=30 type='text' value = '{{item.name}}'>
             <a></br>Price: </a><input name='newMenuItemPrice' type='text' value = {{item.price}}>
             <a></br>Description: </a><input name='newMenuItemDesc' type='text' value = '{{item.description}}'>
             <a></br>Course: </a><input name='newMenuItemCourse' type='text' value = {{item.course}}>
             </br>
             <input type='submit' value='Delete'>
-            <a href='{{ url_for('restaurantMenu', restaurant_id=restaurant_id) }}'>Cancel</a>
+            <a href='{{ url_for('showMenu', restaurant_id=restaurant_id) }}'>Cancel</a>
         </form>
     </body>
 </html>
