@@ -33,7 +33,7 @@ def menuItemJSON(restaurant_id, menu_id):
     items = session.query(MenuItem).filter_by(id=menu_id).one()
     return jsonify(MenuItem=[items.serialize])
 
-
+    
 # List all the restaurants in the DB with edit and delete links.
 # It also has a link to display the menu for the restaurant
 @app.route('/')
