@@ -1,0 +1,52 @@
+body {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background:rgba(31, 29, 29, 0.815);
+    border: 15px solid white;
+    border-radius: 30px;
+    margin: 50px auto;
+    width: 50%;
+}
+
+.header {
+    color: lightblue;
+    font-size: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.sep_rest hr {
+    border: 5px solid white;
+}
+
+.section {
+    font-size: 30px;
+    padding: 20px 100px;
+}
+
+.radiob {
+    padding: 0px 50px;
+}
+
+input[type=radio]:checked +label {
+    color: lightblue;
+}
+
+.actions{
+    text-align:center;
+}
+input[type='text'] { 
+    font-size: 20px; 
+    width: 50%;
+    float:right;
+}
+
+input[type='submit'] { 
+    font-size: 20px; 
+    margin: 0px 20px;
+}
+
+.link {
+    color: white;
+    font-size: 25px;
+}

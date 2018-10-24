@@ -1,13 +1,31 @@
 <html>
+    <head>
+        <title>Add New Menu Item</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='modifyMenuItem.css') }}">
+    </head>
     <body>
-        <h2>Add New Menu Item</h2>
-        <form method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/menu/new'>
-            <a></br>Name: </a><input name='newMenuItemName' type='text' placeholder = 'Menu Item Name'>
-            <a></br>Price: </a><input name='newMenuItemPrice' type='text' placeholder = 'Menu Item Price'>
-            <a></br>Description: </a><input name='newMenuItemDesc' type='text' placeholder = 'Menu Item Description'>
-            <a></br>Course: </a><input name='newMenuItemCourse' type='text' placeholder = 'Menu Item Course'>
-            </br>
-            <input type='submit' value='Create'> 
+        <div class = "header">
+            <a>Add New Menu Item</a>
+        </div>
+        <div class = "sep_rest">
+            <hr>
+        </div>
+        <form class = "section" method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/menu/new'>
+            <a>Name: </a><input name='newMenuItemName' type='text' placeholder = 'Menu Item Name'> <br>
+            <a>Price: </a><input name='newMenuItemPrice' type='text' placeholder = 'Menu Item Price'> <br>
+            <a>Description: </a><input name='newMenuItemDesc' type='text' placeholder = 'Menu Item Description'> <br>
+            <a>Course: </a><br>
+            <div class = "radiob">
+                <input type = "radio" id="appetizer" name='MenuItemCourse' value = "Appetizer" checked> <label class="choice" for="appetizer" checked>Appetizer </label><br>
+                <input type = "radio" id="entree" name='MenuItemCourse' value = "Entree"> <label class="choice" for="entree"> Entree </label><br>
+                <input type = "radio" id="dessert" name='MenuItemCourse' value = "Dessert"><label class="choice" for="dessert">Dessert </label><br>
+                <input type = "radio" id="beverage" name='MenuItemCourse' value = "Beverage"><label class="choice" for="beverage">Beverage</label><br>
+            </div>
+            <br>
+            <div class = "actions">
+                <input type='submit' value='Create'>
+                <a class ="link" href='{{ url_for('showMenu', restaurant_id=restaurant_id)}}'>Cancel</a>
+            </div>
         </form>
     </body>
 </html>
