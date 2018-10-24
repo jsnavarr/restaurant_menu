@@ -1,0 +1,40 @@
+
+body {
+    width: 60%;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: steelblue;
+    margin: 20px auto;
+}
+
+.header {
+    font-size: 50px;
+    text-align: center;
+    border: 10px solid rgba(10, 84, 128, 0.733);
+    border-radius: 50px 50px 0px 0px;
+    padding: 20px;
+    background:rgba(10, 84, 128, 0.733);
+}
+
+.name {
+    font-size: 30px;
+    border: 10px solid rgba(10, 84, 128, 0.733);
+    padding: 20px 20px;
+    background:rgba(102, 93, 190, 0.815);
+}
+
+input[type='text'] { 
+    font-size: 20px; 
+    width: 50%;
+    padding: 0px 20px;
+}
+
+input[type='submit'] { 
+    font-size: 20px; 
+    margin: 0px 20px;
+}
+
+.link {
+    color: white;
+    font-size: 25px;
+}

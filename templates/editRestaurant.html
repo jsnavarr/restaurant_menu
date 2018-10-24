@@ -1,11 +1,17 @@
 <html>
+    <head>
+        <title>Add New Restaurant</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='modifyRestaurant.css') }}">
+    </head>
     <body>
-        <h2>Edit Restaurant</h2>
-        <form method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/edit'>
-            <a></br>Name: </a><input name='RestName' size=30 type='text' value = '{{item.name}}'>
-            </br>
+        <div class = "header">
+            <a>Edit Restaurant</a>
+        </div>
+        <br>
+        <form class = "name" method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/edit'>
+            <a>Name: </a><input name='RestName' type='text' value = '{{item.name}}'>
             <input type='submit' value='Update'> 
-            <a href='{{ url_for('showRestaurants')}}'>Cancel</a>
+            <a class = "link" href='{{ url_for('showRestaurants')}}'>Cancel</a>
         </form>
     </body>
 </html>

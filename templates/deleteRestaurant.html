@@ -1,11 +1,17 @@
 <html>
+    <head>
+        <title>Add New Restaurant</title>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='modifyRestaurant.css') }}">
+    </head>
     <body>
-        <h2>Delete Restaurant</h2>
-        <form method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/delete'>
-            <a></br>Name: '{{item.name}}'</a>
-            </br>
+        <div class = "header">
+            <a>Delete Restaurant</a>
+        </div>
+        <br>
+        <form class = "name" method='POST' enctype='multipart/form-data' action='/restaurant/{{restaurant_id}}/delete'>
+            <a>Name: </a><input name='RestName' type='text' value = '{{item.name}}' disabled>
             <input type='submit' value='Delete'>
-            <a href='{{ url_for('showRestaurants', restaurant_id=restaurant_id) }}'>Cancel</a>
+            <a class = "link" href='{{ url_for('showRestaurants', restaurant_id=restaurant_id) }}'>Cancel</a>
         </form>
     </body>
 </html>
